@@ -9,54 +9,71 @@
  * Do not edit the class manually.
  */
 
-/*
- * Object.h
- *
- * This is the implementation of a JSON object.
- */
-
-#ifndef COM_MADANA_APICLIENT_MODEL_Object_H_
-#define COM_MADANA_APICLIENT_MODEL_Object_H_
 
 
-#include "ModelBase.h"
-
-#include <cpprest/details/basic_types.h>
-#include <cpprest/json.h>
+#include "Xml_ns0_inputStream.h"
 
 namespace com {
 namespace madana {
 namespace apiclient {
 namespace model {
 
-class  Object : public ModelBase
+
+
+
+Xml_ns0_inputStream::Xml_ns0_inputStream()
 {
-public:
-    Object();
-    virtual ~Object();
+}
 
-    /////////////////////////////////////////////
-    /// ModelBase overrides
-    void validate() override;
+Xml_ns0_inputStream::~Xml_ns0_inputStream()
+{
+}
 
-    web::json::value toJson() const override;
-    bool fromJson(const web::json::value& json) override;
+void Xml_ns0_inputStream::validate()
+{
+    // TODO: implement validation
+}
 
-    void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
-    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
+web::json::value Xml_ns0_inputStream::toJson() const
+{
 
-    /////////////////////////////////////////////
-    /// Object manipulation
-    web::json::value getValue(const utility::string_t& key) const;
-    void setValue(const utility::string_t& key, const web::json::value& value);
+    web::json::value val = web::json::value::object();
+    
 
-private:
-    web::json::value m_object;
-};
+    return val;
+}
+
+bool Xml_ns0_inputStream::fromJson(const web::json::value& val)
+{
+    bool ok = true;
+    
+    return ok;
+}
+
+void Xml_ns0_inputStream::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+{
+    utility::string_t namePrefix = prefix;
+    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
+    {
+        namePrefix += utility::conversions::to_string_t(".");
+    }
+}
+
+bool Xml_ns0_inputStream::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+{
+    bool ok = true;
+    utility::string_t namePrefix = prefix;
+    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
+    {
+        namePrefix += utility::conversions::to_string_t(".");
+    }
+
+    return ok;
+}
 
 }
 }
 }
 }
 
-#endif /* COM_MADANA_APICLIENT_MODEL_Object_H_ */
+

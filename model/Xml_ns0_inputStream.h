@@ -10,19 +10,17 @@
  */
 
 /*
- * Xml_ns0_enclaveRunningAttestation_allOf.h
+ * Xml_ns0_inputStream.h
  *
  * 
  */
 
-#ifndef COM_MADANA_APICLIENT_MODEL_Xml_ns0_enclaveRunningAttestation_allOf_H_
-#define COM_MADANA_APICLIENT_MODEL_Xml_ns0_enclaveRunningAttestation_allOf_H_
+#ifndef COM_MADANA_APICLIENT_MODEL_Xml_ns0_inputStream_H_
+#define COM_MADANA_APICLIENT_MODEL_Xml_ns0_inputStream_H_
 
 
 #include "../ModelBase.h"
 
-#include "Xml_ns0_enclaveProcess.h"
-#include "Xml_ns0_nodeInfo.h"
 
 namespace com {
 namespace madana {
@@ -33,12 +31,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  Xml_ns0_enclaveRunningAttestation_allOf
+class  Xml_ns0_inputStream
     : public ModelBase
 {
 public:
-    Xml_ns0_enclaveRunningAttestation_allOf();
-    virtual ~Xml_ns0_enclaveRunningAttestation_allOf();
+    Xml_ns0_inputStream();
+    virtual ~Xml_ns0_inputStream();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -52,32 +50,10 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Xml_ns0_enclaveRunningAttestation_allOf members
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<Xml_ns0_enclaveProcess> getEnclaveProcess() const;
-    bool enclaveProcessIsSet() const;
-    void unsetEnclaveProcess();
-
-    void setEnclaveProcess(const std::shared_ptr<Xml_ns0_enclaveProcess>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<Xml_ns0_nodeInfo> getNodeInfo() const;
-    bool nodeInfoIsSet() const;
-    void unsetNodeInfo();
-
-    void setNodeInfo(const std::shared_ptr<Xml_ns0_nodeInfo>& value);
+    /// Xml_ns0_inputStream members
 
 
 protected:
-    std::shared_ptr<Xml_ns0_enclaveProcess> m_EnclaveProcess;
-    bool m_EnclaveProcessIsSet;
-    std::shared_ptr<Xml_ns0_nodeInfo> m_NodeInfo;
-    bool m_NodeInfoIsSet;
 };
 
 
@@ -86,4 +62,4 @@ protected:
 }
 }
 
-#endif /* COM_MADANA_APICLIENT_MODEL_Xml_ns0_enclaveRunningAttestation_allOf_H_ */
+#endif /* COM_MADANA_APICLIENT_MODEL_Xml_ns0_inputStream_H_ */
