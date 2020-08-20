@@ -11,7 +11,7 @@
 
 
 
-#include "Xml_ns0_signedData.h"
+#include "Json_SignedData_utils.h"
 
 namespace com {
 namespace madana {
@@ -21,34 +21,30 @@ namespace model {
 
 
 
-Xml_ns0_signedData::Xml_ns0_signedData()
+Json_SignedData_utils::Json_SignedData_utils()
 {
-    m_Data = utility::conversions::to_string_t("");
-    m_DataIsSet = false;
     m_Fingerpint = utility::conversions::to_string_t("");
     m_FingerpintIsSet = false;
     m_Signature = utility::conversions::to_string_t("");
     m_SignatureIsSet = false;
+    m_Data = utility::conversions::to_string_t("");
+    m_DataIsSet = false;
 }
 
-Xml_ns0_signedData::~Xml_ns0_signedData()
+Json_SignedData_utils::~Json_SignedData_utils()
 {
 }
 
-void Xml_ns0_signedData::validate()
+void Json_SignedData_utils::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value Xml_ns0_signedData::toJson() const
+web::json::value Json_SignedData_utils::toJson() const
 {
 
     web::json::value val = web::json::value::object();
     
-    if(m_DataIsSet)
-    {
-        val[utility::conversions::to_string_t("data")] = ModelBase::toJson(m_Data);
-    }
     if(m_FingerpintIsSet)
     {
         val[utility::conversions::to_string_t("fingerpint")] = ModelBase::toJson(m_Fingerpint);
@@ -57,24 +53,18 @@ web::json::value Xml_ns0_signedData::toJson() const
     {
         val[utility::conversions::to_string_t("signature")] = ModelBase::toJson(m_Signature);
     }
+    if(m_DataIsSet)
+    {
+        val[utility::conversions::to_string_t("data")] = ModelBase::toJson(m_Data);
+    }
 
     return val;
 }
 
-bool Xml_ns0_signedData::fromJson(const web::json::value& val)
+bool Json_SignedData_utils::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t("data")))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("data"));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_data;
-            ok &= ModelBase::fromJson(fieldValue, refVal_data);
-            setData(refVal_data);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t("fingerpint")))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("fingerpint"));
@@ -95,19 +85,25 @@ bool Xml_ns0_signedData::fromJson(const web::json::value& val)
             setSignature(refVal_signature);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("data")))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t("data"));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_data;
+            ok &= ModelBase::fromJson(fieldValue, refVal_data);
+            setData(refVal_data);
+        }
+    }
     return ok;
 }
 
-void Xml_ns0_signedData::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void Json_SignedData_utils::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t("."))
     {
         namePrefix += utility::conversions::to_string_t(".");
-    }
-    if(m_DataIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("data"), m_Data));
     }
     if(m_FingerpintIsSet)
     {
@@ -117,9 +113,13 @@ void Xml_ns0_signedData::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("signature"), m_Signature));
     }
+    if(m_DataIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("data"), m_Data));
+    }
 }
 
-bool Xml_ns0_signedData::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool Json_SignedData_utils::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -128,12 +128,6 @@ bool Xml_ns0_signedData::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         namePrefix += utility::conversions::to_string_t(".");
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t("data")))
-    {
-        utility::string_t refVal_data;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("data")), refVal_data );
-        setData(refVal_data);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t("fingerpint")))
     {
         utility::string_t refVal_fingerpint;
@@ -146,68 +140,74 @@ bool Xml_ns0_signedData::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("signature")), refVal_signature );
         setSignature(refVal_signature);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t("data")))
+    {
+        utility::string_t refVal_data;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t("data")), refVal_data );
+        setData(refVal_data);
+    }
     return ok;
 }
 
-utility::string_t Xml_ns0_signedData::getData() const
-{
-    return m_Data;
-}
-
-void Xml_ns0_signedData::setData(const utility::string_t& value)
-{
-    m_Data = value;
-    m_DataIsSet = true;
-}
-
-bool Xml_ns0_signedData::dataIsSet() const
-{
-    return m_DataIsSet;
-}
-
-void Xml_ns0_signedData::unsetData()
-{
-    m_DataIsSet = false;
-}
-utility::string_t Xml_ns0_signedData::getFingerpint() const
+utility::string_t Json_SignedData_utils::getFingerpint() const
 {
     return m_Fingerpint;
 }
 
-void Xml_ns0_signedData::setFingerpint(const utility::string_t& value)
+void Json_SignedData_utils::setFingerpint(const utility::string_t& value)
 {
     m_Fingerpint = value;
     m_FingerpintIsSet = true;
 }
 
-bool Xml_ns0_signedData::fingerpintIsSet() const
+bool Json_SignedData_utils::fingerpintIsSet() const
 {
     return m_FingerpintIsSet;
 }
 
-void Xml_ns0_signedData::unsetFingerpint()
+void Json_SignedData_utils::unsetFingerpint()
 {
     m_FingerpintIsSet = false;
 }
-utility::string_t Xml_ns0_signedData::getSignature() const
+utility::string_t Json_SignedData_utils::getSignature() const
 {
     return m_Signature;
 }
 
-void Xml_ns0_signedData::setSignature(const utility::string_t& value)
+void Json_SignedData_utils::setSignature(const utility::string_t& value)
 {
     m_Signature = value;
     m_SignatureIsSet = true;
 }
 
-bool Xml_ns0_signedData::signatureIsSet() const
+bool Json_SignedData_utils::signatureIsSet() const
 {
     return m_SignatureIsSet;
 }
 
-void Xml_ns0_signedData::unsetSignature()
+void Json_SignedData_utils::unsetSignature()
 {
     m_SignatureIsSet = false;
+}
+utility::string_t Json_SignedData_utils::getData() const
+{
+    return m_Data;
+}
+
+void Json_SignedData_utils::setData(const utility::string_t& value)
+{
+    m_Data = value;
+    m_DataIsSet = true;
+}
+
+bool Json_SignedData_utils::dataIsSet() const
+{
+    return m_DataIsSet;
+}
+
+void Json_SignedData_utils::unsetData()
+{
+    m_DataIsSet = false;
 }
 }
 }

@@ -10,20 +10,18 @@
  */
 
 /*
- * Json_EnclaveRunningAttestationApproval.h
+ * Json_SignedData_utils.h
  *
  * 
  */
 
-#ifndef COM_MADANA_APICLIENT_MODEL_Json_EnclaveRunningAttestationApproval_H_
-#define COM_MADANA_APICLIENT_MODEL_Json_EnclaveRunningAttestationApproval_H_
+#ifndef COM_MADANA_APICLIENT_MODEL_Json_SignedData_utils_H_
+#define COM_MADANA_APICLIENT_MODEL_Json_SignedData_utils_H_
 
 
-#include "Json_EnclaveRunningAttestation.h"
-#include "Json_EnclaveProcess.h"
+#include "../ModelBase.h"
+
 #include <cpprest/details/basic_types.h>
-#include "Json_NodeInfo.h"
-#include "Json_EnclaveRunningAttestationApproval_allOf.h"
 
 namespace com {
 namespace madana {
@@ -34,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  Json_EnclaveRunningAttestationApproval
-    : public Json_EnclaveRunningAttestation
+class  Json_SignedData_utils
+    : public ModelBase
 {
 public:
-    Json_EnclaveRunningAttestationApproval();
-    virtual ~Json_EnclaveRunningAttestationApproval();
+    Json_SignedData_utils();
+    virtual ~Json_SignedData_utils();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,21 +51,43 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Json_EnclaveRunningAttestationApproval members
+    /// Json_SignedData_utils members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getApproved() const;
-    bool approvedIsSet() const;
-    void unsetApproved();
+    utility::string_t getFingerpint() const;
+    bool fingerpintIsSet() const;
+    void unsetFingerpint();
 
-    void setApproved(const utility::string_t& value);
+    void setFingerpint(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getSignature() const;
+    bool signatureIsSet() const;
+    void unsetSignature();
+
+    void setSignature(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getData() const;
+    bool dataIsSet() const;
+    void unsetData();
+
+    void setData(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_Approved;
-    bool m_ApprovedIsSet;
+    utility::string_t m_Fingerpint;
+    bool m_FingerpintIsSet;
+    utility::string_t m_Signature;
+    bool m_SignatureIsSet;
+    utility::string_t m_Data;
+    bool m_DataIsSet;
 };
 
 
@@ -76,4 +96,4 @@ protected:
 }
 }
 
-#endif /* COM_MADANA_APICLIENT_MODEL_Json_EnclaveRunningAttestationApproval_H_ */
+#endif /* COM_MADANA_APICLIENT_MODEL_Json_SignedData_utils_H_ */
