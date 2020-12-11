@@ -48,6 +48,8 @@ api/UserServiceApi.h
 git_push.sh
 model/Json_Disk_config.cpp
 model/Json_Disk_config.h
+model/Json_EnclavePort.cpp
+model/Json_EnclavePort.h
 model/Json_EnclaveProcess.cpp
 model/Json_EnclaveProcess.h
 model/Json_EnclaveRunRequest.cpp
@@ -102,6 +104,8 @@ model/Json_Process.cpp
 model/Json_Process.h
 model/Json_RunConfig.cpp
 model/Json_RunConfig.h
+model/Json_SGXInfo.cpp
+model/Json_SGXInfo.h
 model/Json_SignedData.cpp
 model/Json_SignedData.h
 model/Json_SignedData_utils.cpp
@@ -126,10 +130,18 @@ model/Xml_ns0_MDN_UserSetting.cpp
 model/Xml_ns0_MDN_UserSetting.h
 model/Xml_ns0_MDN_UserSetting_allOf.cpp
 model/Xml_ns0_MDN_UserSetting_allOf.h
+model/Xml_ns0_SGXInfo.cpp
+model/Xml_ns0_SGXInfo.h
+model/Xml_ns0_SGXInfo_allOf.cpp
+model/Xml_ns0_SGXInfo_allOf.h
 model/Xml_ns0_disk_config.cpp
 model/Xml_ns0_disk_config.h
 model/Xml_ns0_disk_config_allOf.cpp
 model/Xml_ns0_disk_config_allOf.h
+model/Xml_ns0_enclavePort.cpp
+model/Xml_ns0_enclavePort.h
+model/Xml_ns0_enclavePort_allOf.cpp
+model/Xml_ns0_enclavePort_allOf.h
 model/Xml_ns0_enclaveProcess.cpp
 model/Xml_ns0_enclaveProcess.h
 model/Xml_ns0_enclaveProcess_allOf.cpp
