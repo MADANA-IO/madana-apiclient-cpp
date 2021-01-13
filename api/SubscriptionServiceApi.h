@@ -10,68 +10,64 @@
  */
 
 /*
- * Json_MDN_Certificate.h
+ * SubscriptionServiceApi.h
  *
  * 
  */
 
-#ifndef COM_MADANA_APICLIENT_MODEL_Json_MDN_Certificate_H_
-#define COM_MADANA_APICLIENT_MODEL_Json_MDN_Certificate_H_
+#ifndef   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_
+#define   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_
 
 
+#include "../ApiClient.h"
+
+#include "HttpContent.h"
 #include "../ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
+#include <boost/optional.hpp>
 
-namespace com {
+namespace   com {
 namespace madana {
 namespace apiclient {
-namespace model {
+namespace api {
+
+using namespace com::madana::apiclient::model;
 
 
-/// <summary>
-/// 
-/// </summary>
-class  Json_MDN_Certificate
-    : public ModelBase
+
+class  SubscriptionServiceApi 
 {
 public:
-    Json_MDN_Certificate();
-    virtual ~Json_MDN_Certificate();
 
-    /////////////////////////////////////////////
-    /// ModelBase overrides
+    explicit SubscriptionServiceApi( std::shared_ptr<const ApiClient> apiClient );
 
-    void validate() override;
-
-    web::json::value toJson() const override;
-    bool fromJson(const web::json::value& json) override;
-
-    void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
-    bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
-
-    /////////////////////////////////////////////
-    /// Json_MDN_Certificate members
+    virtual ~SubscriptionServiceApi();
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getPem() const;
-    bool pemIsSet() const;
-    void unsetPem();
-
-    void setPem(const utility::string_t& value);
-
+    /// <remarks>
+    /// 
+    /// </remarks>
+    pplx::task<std::shared_ptr<HttpContent>> addFreeSubscription(
+    ) const;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    pplx::task<std::shared_ptr<HttpContent>> getApplication(
+    ) const;
 
 protected:
-    utility::string_t m_Pem;
-    bool m_PemIsSet;
+    std::shared_ptr<const ApiClient> m_ApiClient;
 };
 
-
 }
 }
 }
 }
 
-#endif /* COM_MADANA_APICLIENT_MODEL_Json_MDN_Certificate_H_ */
+#endif /*   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_ */
+

@@ -41,6 +41,8 @@ api/SocialPlatformServiceApi.cpp
 api/SocialPlatformServiceApi.h
 api/SocialServiceApi.cpp
 api/SocialServiceApi.h
+api/SubscriptionServiceApi.cpp
+api/SubscriptionServiceApi.h
 api/SystemServiceApi.cpp
 api/SystemServiceApi.h
 api/UserServiceApi.cpp
