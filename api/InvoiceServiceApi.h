@@ -10,18 +10,19 @@
  */
 
 /*
- * SubscriptionServiceApi.h
+ * InvoiceServiceApi.h
  *
  * 
  */
 
-#ifndef   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_
-#define   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_
+#ifndef   COM_MADANA_APICLIENT_API_InvoiceServiceApi_H_
+#define   COM_MADANA_APICLIENT_API_InvoiceServiceApi_H_
 
 
 #include "../ApiClient.h"
 
 #include "HttpContent.h"
+#include <cpprest/details/basic_types.h>
 #include "../ModelBase.h"
 
 #include <boost/optional.hpp>
@@ -35,13 +36,13 @@ using namespace com::madana::apiclient::model;
 
 
 
-class  SubscriptionServiceApi 
+class  InvoiceServiceApi 
 {
 public:
 
-    explicit SubscriptionServiceApi( std::shared_ptr<const ApiClient> apiClient );
+    explicit InvoiceServiceApi( std::shared_ptr<const ApiClient> apiClient );
 
-    virtual ~SubscriptionServiceApi();
+    virtual ~InvoiceServiceApi();
 
     /// <summary>
     /// 
@@ -49,23 +50,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    pplx::task<std::shared_ptr<HttpContent>> addFreeSubscription(
-    ) const;
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<HttpContent>> addPassTrialSubscription(
-    ) const;
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    pplx::task<std::shared_ptr<HttpContent>> getApplication(
+    /// <param name="dayssince"> (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
+    pplx::task<std::shared_ptr<HttpContent>> getActiveSaaSSubscriptions(
+        boost::optional<utility::string_t> dayssince
     ) const;
 
 protected:
@@ -77,5 +64,5 @@ protected:
 }
 }
 
-#endif /*   COM_MADANA_APICLIENT_API_SubscriptionServiceApi_H_ */
+#endif /*   COM_MADANA_APICLIENT_API_InvoiceServiceApi_H_ */
 

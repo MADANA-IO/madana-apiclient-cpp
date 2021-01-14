@@ -31,6 +31,8 @@ api/EnclaveServiceApi.cpp
 api/EnclaveServiceApi.h
 api/EnvironmentServiceApi.cpp
 api/EnvironmentServiceApi.h
+api/InvoiceServiceApi.cpp
+api/InvoiceServiceApi.h
 api/NodeServiceApi.cpp
 api/NodeServiceApi.h
 api/OrganizationServiceApi.cpp

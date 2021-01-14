@@ -10,7 +10,7 @@
  */
 
 
-#include "OrganizationServiceApi.h"
+#include "InvoiceServiceApi.h"
 #include "IHttpBody.h"
 #include "JsonBody.h"
 #include "MultipartFormData.h"
@@ -26,21 +26,21 @@ namespace api {
 
 using namespace com::madana::apiclient::model;
 
-OrganizationServiceApi::OrganizationServiceApi( std::shared_ptr<const ApiClient> apiClient )
+InvoiceServiceApi::InvoiceServiceApi( std::shared_ptr<const ApiClient> apiClient )
     : m_ApiClient(apiClient)
 {
 }
 
-OrganizationServiceApi::~OrganizationServiceApi()
+InvoiceServiceApi::~InvoiceServiceApi()
 {
 }
 
-pplx::task<std::shared_ptr<HttpContent>> OrganizationServiceApi::getNodes3() const
+pplx::task<std::shared_ptr<HttpContent>> InvoiceServiceApi::getActiveSaaSSubscriptions(boost::optional<utility::string_t> dayssince) const
 {
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/organizations");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/invoices");
     
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams( localVarApiConfiguration->getDefaultHeaders() );
@@ -77,6 +77,10 @@ pplx::task<std::shared_ptr<HttpContent>> OrganizationServiceApi::getNodes3() con
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
 
+    if (dayssince)
+    {
+        localVarQueryParams[utility::conversions::to_string_t("dayssince")] = ApiClient::parameterToString(*dayssince);
+    }
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
     utility::string_t localVarRequestHttpContentType;
@@ -97,7 +101,7 @@ pplx::task<std::shared_ptr<HttpContent>> OrganizationServiceApi::getNodes3() con
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("OrganizationServiceApi->getNodes3 does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("InvoiceServiceApi->getActiveSaaSSubscriptions does not consume any supported media type"));
     }
 
 
@@ -117,7 +121,7 @@ pplx::task<std::shared_ptr<HttpContent>> OrganizationServiceApi::getNodes3() con
         if (localVarResponse.status_code() >= 400)
         {
             throw ApiException(localVarResponse.status_code()
-                , utility::conversions::to_string_t("error calling getNodes3: ") + localVarResponse.reason_phrase()
+                , utility::conversions::to_string_t("error calling getActiveSaaSSubscriptions: ") + localVarResponse.reason_phrase()
                 , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
         }
 
@@ -128,7 +132,7 @@ pplx::task<std::shared_ptr<HttpContent>> OrganizationServiceApi::getNodes3() con
             if( localVarContentType.find(localVarResponseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling getNodes3: unexpected response type: ") + localVarContentType
+                    , utility::conversions::to_string_t("error calling getActiveSaaSSubscriptions: unexpected response type: ") + localVarContentType
                     , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
             }
         }
