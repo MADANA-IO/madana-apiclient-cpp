@@ -10,21 +10,18 @@
  */
 
 /*
- * Json_V1EventList.h
+ * Json_NodeRunRequest.h
  *
  * 
  */
 
-#ifndef COM_MADANA_APICLIENT_MODEL_Json_V1EventList_H_
-#define COM_MADANA_APICLIENT_MODEL_Json_V1EventList_H_
+#ifndef COM_MADANA_APICLIENT_MODEL_Json_NodeRunRequest_H_
+#define COM_MADANA_APICLIENT_MODEL_Json_NodeRunRequest_H_
 
 
 #include "../ModelBase.h"
 
-#include "Json_V1ListMeta.h"
-#include "Json_V1Event.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
 
 namespace com {
 namespace madana {
@@ -35,12 +32,12 @@ namespace model {
 /// <summary>
 /// 
 /// </summary>
-class  Json_V1EventList
+class  Json_NodeRunRequest
     : public ModelBase
 {
 public:
-    Json_V1EventList();
-    virtual ~Json_V1EventList();
+    Json_NodeRunRequest();
+    virtual ~Json_NodeRunRequest();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -54,54 +51,32 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Json_V1EventList members
+    /// Json_NodeRunRequest members
 
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Json_V1ListMeta> getMetadata() const;
-    bool metadataIsSet() const;
-    void unsetMetadata();
+    utility::string_t getCpuCount() const;
+    bool cpuCountIsSet() const;
+    void unsetCpuCount();
 
-    void setMetadata(const std::shared_ptr<Json_V1ListMeta>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getApiVersion() const;
-    bool apiVersionIsSet() const;
-    void unsetApiVersion();
-
-    void setApiVersion(const utility::string_t& value);
+    void setCpuCount(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getKind() const;
-    bool kindIsSet() const;
-    void unsetKind();
+    utility::string_t getSubdomain() const;
+    bool subdomainIsSet() const;
+    void unsetSubdomain();
 
-    void setKind(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<Json_V1Event>>& getItems();
-    bool itemsIsSet() const;
-    void unsetItems();
-
-    void setItems(const std::vector<std::shared_ptr<Json_V1Event>>& value);
+    void setSubdomain(const utility::string_t& value);
 
 
 protected:
-    std::shared_ptr<Json_V1ListMeta> m_Metadata;
-    bool m_MetadataIsSet;
-    utility::string_t m_ApiVersion;
-    bool m_ApiVersionIsSet;
-    utility::string_t m_Kind;
-    bool m_KindIsSet;
-    std::vector<std::shared_ptr<Json_V1Event>> m_Items;
-    bool m_ItemsIsSet;
+    utility::string_t m_CpuCount;
+    bool m_CpuCountIsSet;
+    utility::string_t m_Subdomain;
+    bool m_SubdomainIsSet;
 };
 
 
@@ -110,4 +85,4 @@ protected:
 }
 }
 
-#endif /* COM_MADANA_APICLIENT_MODEL_Json_V1EventList_H_ */
+#endif /* COM_MADANA_APICLIENT_MODEL_Json_NodeRunRequest_H_ */

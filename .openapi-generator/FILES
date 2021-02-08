@@ -108,6 +108,8 @@ model/Json_NetworkInterface.cpp
 model/Json_NetworkInterface.h
 model/Json_NodeInfo.cpp
 model/Json_NodeInfo.h
+model/Json_NodeRunRequest.cpp
+model/Json_NodeRunRequest.h
 model/Json_Process.cpp
 model/Json_Process.h
 model/Json_RunConfig.cpp
