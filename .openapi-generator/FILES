@@ -118,8 +118,6 @@ model/Json_SGXInfo.cpp
 model/Json_SGXInfo.h
 model/Json_SignedData.cpp
 model/Json_SignedData.h
-model/Json_SignedData_utils.cpp
-model/Json_SignedData_utils.h
 model/Json_V1Event.cpp
 model/Json_V1Event.h
 model/Json_V1EventList.cpp
